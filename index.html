@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Afzal AI Studio</title>
+<style>
+body {
+  margin: 0;
+  background: #080d1c;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 25px;
+}
+h1 { color: #55c7ff; }
+.container {
+  max-width: 650px;
+  margin: 35px auto;
+  background: #151e35;
+  padding: 25px;
+  border-radius: 18px;
+}
+button, select, textarea {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 9px;
+  border: none;
+  box-sizing: border-box;
+}
+button {
+  background: #087cf5;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+textarea { height: 110px; }
+#preview { max-width: 100%; margin-top: 15px; }
+</style>
+</head>
+<body>
+<h1>⚡ AFZAL AI STUDIO</h1>
+<p>Your AI Video Creation Studio</p>
+
+<div class="container">
+<h2>Create AI Video</h2>
+
+<select id="mode">
+<option>Text to Video</option>
+<option>Image to Video</option>
+</select>
+
+<textarea id="prompt" placeholder="Describe your video..."></textarea>
+
+<input type="file" id="photo" accept="image/*">
+
+<img id="preview">
+
+<button onclick="generate()">Generate Video</button>
+
+<p id="status">Your AI Studio is ready!</p>
+</div>
+
+<script>
+document.getElementById("photo").onchange = function(e) {
+ const file = e.target.files[0];
+ if(file) {
+  document.getElementById("preview").src =
+  URL.createObjectURL(file);
+ }
+};
+
+function generate() {
+ document.getElementById("status").innerText =
+ "Website ready! AI video engine will be connected in the next step.";
+}
+</script>
+</body>
+</html>
