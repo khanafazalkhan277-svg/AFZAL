@@ -72,7 +72,31 @@ document.getElementById("photo").onchange = function(e) {
 };
 
 function generate() {
- document.getElementById("status").innerText =
+ document.getElementById("status").innerText = <script>
+function generate() {
+    document.getElementById("status").innerText = "एआई वीडियो बना रहा है... कृपया प्रतीक्षा करें...";
+    
+    // यहाँ अपना असली Hugging Face टोकन डालें (hf_ से शुरू होने वाला)
+    const token = "hf_cVEXZmIGGtEvDPjloOSMjeuUhAlLxTaqTeW";
+    
+    fetch("https://api-inference.huggingface.co/models/stabilityai/stable-video-diffusion-img2vid", {
+        method: "POST",
+        headers: {
+            "Authorization": Bearer ${token},
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ inputs: "AI video generation" })
+    })
+    .then(response => response.blob())
+    .then(blob => {
+        const videoUrl = URL.createObjectURL(blob);
+        document.getElementById("status").innerHTML = <video controls width="100%"><source src="${videoUrl}" type="video/mp4"></video>;
+    })
+    .catch(error => {
+        document.getElementById("status").innerText = "माफ़ करें, वीडियो बनाने में कोई त्रुटि हुई।";
+    });
+}
+</script>
  "Website ready! AI video engine will be connected in the next step.";
 }
 </script>
